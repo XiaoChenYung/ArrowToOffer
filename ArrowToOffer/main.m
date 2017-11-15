@@ -7,9 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "EqualSum.h"
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
+        [EqualSum equalSubWithArray:@[@1, @3, @4, @8, @9] value:12];
         // insert code here...
         NSLog(@"Hello, World!");
     }
