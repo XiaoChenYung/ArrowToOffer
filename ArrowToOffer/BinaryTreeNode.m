@@ -10,6 +10,26 @@
 
 @implementation BinaryTreeNode
 
++ (void)levelTraverseTreeNode:(BinaryTreeNode *)root handler:(void (^)(BinaryTreeNode *))handler {
+    if (root != nil) {
+        NSMutableArray *queueArray = [NSMutableArray array];
+        [queueArray addObject:root];
+        while (queueArray.count > 0) {
+            BinaryTreeNode *node = queueArray.firstObject;
+            if (handler != nil) {
+                handler(node);
+            }
+            [queueArray removeObjectAtIndex:0];
+            if (node.leftNode) {
+                [queueArray addObject:node.leftNode];
+            }
+            if (node.rightNode) {
+                [queueArray addObject:node.rightNode];
+            }
+        }
+    }
+}
+
 + (void)preOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void (^)(BinaryTreeNode *))handler {
     if (root != nil) {
         if (handler != nil) {

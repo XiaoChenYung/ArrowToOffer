@@ -26,4 +26,6 @@
 
 + (void)backOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void(^)(BinaryTreeNode *rootNode))handler;
 
++ (void)levelTraverseTreeNode:(BinaryTreeNode *)root handler:(void(^)(BinaryTreeNode *rootNode))handler;
+
 @end
