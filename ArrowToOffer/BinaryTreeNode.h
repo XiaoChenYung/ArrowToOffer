@@ -20,4 +20,10 @@
 
 + (BinaryTreeNode *)findNodeAtIndex:(NSInteger )index inRootNode:(BinaryTreeNode *)rootTree;
 
++ (void)preOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void(^)(BinaryTreeNode *rootNode))handler;
+
++ (void)inOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void(^)(BinaryTreeNode *rootNode))handler;
+
++ (void)backOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void(^)(BinaryTreeNode *rootNode))handler;
+
 @end

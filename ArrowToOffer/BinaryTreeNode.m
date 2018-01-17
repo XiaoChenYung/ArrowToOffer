@@ -10,6 +10,36 @@
 
 @implementation BinaryTreeNode
 
++ (void)preOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void (^)(BinaryTreeNode *))handler {
+    if (root != nil) {
+        if (handler != nil) {
+            handler(root);
+        }
+        [BinaryTreeNode preOrderTraverseTreeNode:root.leftNode handler:handler];
+        [BinaryTreeNode preOrderTraverseTreeNode:root.rightNode handler:handler];
+    }
+}
+
++ (void)inOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void (^)(BinaryTreeNode *))handler {
+    if (root != nil) {
+        [BinaryTreeNode inOrderTraverseTreeNode:root.leftNode handler:handler];
+        if (handler != nil) {
+            handler(root);
+        }
+        [BinaryTreeNode inOrderTraverseTreeNode:root.rightNode handler:handler];
+    }
+}
+
++ (void)backOrderTraverseTreeNode:(BinaryTreeNode *)root handler:(void (^)(BinaryTreeNode *))handler {
+    if (root != nil) {
+        [BinaryTreeNode backOrderTraverseTreeNode:root.leftNode handler:handler];
+        [BinaryTreeNode backOrderTraverseTreeNode:root.rightNode handler:handler];
+        if (handler != nil) {
+            handler(root);
+        }
+    }
+}
+
 + (BinaryTreeNode *)findNodeAtIndex:(NSInteger)index inRootNode:(BinaryTreeNode *)rootTree {
     if (index < 0 || rootTree == nil) {
         return nil;
