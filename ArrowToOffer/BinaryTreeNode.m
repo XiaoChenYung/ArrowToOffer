@@ -10,6 +10,29 @@
 
 @implementation BinaryTreeNode
 
++ (BinaryTreeNode *)findNodeAtIndex:(NSInteger)index inRootNode:(BinaryTreeNode *)rootTree {
+    if (index < 0 || rootTree == nil) {
+        return nil;
+    }
+    NSMutableArray *queueArray = [NSMutableArray array];
+    [queueArray addObject:rootTree];
+    while (queueArray.count > 0) {
+        BinaryTreeNode *node = queueArray.firstObject;
+        if (index == 0) {
+            return node;
+        }
+        index --;
+        [queueArray removeObjectAtIndex:0];
+        if (node.leftNode) {
+            [queueArray addObject:node.leftNode];
+        }
+        if (node.rightNode) {
+            [queueArray addObject:node.rightNode];
+        }
+    }
+    return nil;
+}
+
 + (BinaryTreeNode *)createBinaryTreeWothValues:(NSArray<NSNumber *> *)values {
     BinaryTreeNode *root = nil;
     for (NSInteger index = 0; index < values.count; index ++) {

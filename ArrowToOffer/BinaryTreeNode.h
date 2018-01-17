@@ -18,4 +18,6 @@
 
 + (BinaryTreeNode *)createBinaryTreeWothValues:(NSArray <NSNumber *>*)values;
 
++ (BinaryTreeNode *)findNodeAtIndex:(NSInteger )index inRootNode:(BinaryTreeNode *)rootTree;
+
 @end
