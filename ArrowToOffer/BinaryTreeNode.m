@@ -10,6 +10,48 @@
 
 @implementation BinaryTreeNode
 
++ (NSInteger)numberNodeOfTree:(BinaryTreeNode *)root {
+    if (root == nil) {
+        return 0;
+    }
+    return MAX([BinaryTreeNode numberNodeOfTree:root.leftNode], [BinaryTreeNode numberNodeOfTree:root.rightNode]) + 1;
+}
+
++ (NSInteger)depthOfTree:(BinaryTreeNode *)root {
+    if (root == nil) {
+        return 0;
+    }
+    if (root.leftNode == nil && root.rightNode == nil) {
+        return 1;
+    }
+    return MAX([BinaryTreeNode depthOfTree:root.leftNode], [BinaryTreeNode depthOfTree:root.rightNode]) + 1;
+}
+
++ (NSInteger)widthOfTree:(BinaryTreeNode *)root {
+    if (root == nil) {
+        return 0;
+    }
+    NSMutableArray *queueArray = [NSMutableArray array];
+    [queueArray addObject:root];
+    NSInteger curWidth = 1;
+    NSInteger maxWidth = 0;
+    while (queueArray.count > 0) {
+        curWidth = queueArray.count;
+        for (NSInteger i = 0; i < curWidth; i ++) {
+            BinaryTreeNode *node = queueArray.firstObject;
+            [queueArray removeObjectAtIndex:0];
+            if (node.leftNode) {
+                [queueArray addObject:node.leftNode];
+            }
+            if (node.rightNode) {
+                [queueArray addObject:node.rightNode];
+            }
+        }
+        maxWidth = MAX(maxWidth, queueArray.count);
+    }
+    return maxWidth;
+}
+
 + (void)levelTraverseTreeNode:(BinaryTreeNode *)root handler:(void (^)(BinaryTreeNode *))handler {
     if (root != nil) {
         NSMutableArray *queueArray = [NSMutableArray array];

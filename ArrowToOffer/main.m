@@ -16,9 +16,11 @@ int main(int argc, const char * argv[]) {
         // insert code here...
         BinaryTreeNode *root = [BinaryTreeNode createBinaryTreeWothValues:@[@2, @1, @7, @0, @2, @5, @11, @(-1), @1, @2, @3, @5, @6, @10, @13]];
 //        BinaryTreeNode *node = [BinaryTreeNode findNodeAtIndex:12 inRootNode:root];
-        [BinaryTreeNode levelTraverseTreeNode:root handler:^(BinaryTreeNode *rootNode) {
-            NSLog(@"%zu", rootNode.value);
-        }];
+//        [BinaryTreeNode levelTraverseTreeNode:root handler:^(BinaryTreeNode *rootNode) {
+//            NSLog(@"%zu", rootNode.value);
+//        }];
+        NSInteger depth = [BinaryTreeNode widthOfTree:root];
+        NSLog(@"哈哈");
         
     }
     return 0;

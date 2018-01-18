@@ -28,4 +28,10 @@
 
 + (void)levelTraverseTreeNode:(BinaryTreeNode *)root handler:(void(^)(BinaryTreeNode *rootNode))handler;
 
++ (NSInteger)depthOfTree:(BinaryTreeNode *)root;
+
++ (NSInteger)widthOfTree:(BinaryTreeNode *)root;
+
++ (NSInteger)numberNodeOfTree:(BinaryTreeNode *)root;
+
 @end
