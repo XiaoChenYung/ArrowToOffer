@@ -34,4 +34,10 @@
 
 + (NSInteger)numberNodeOfTree:(BinaryTreeNode *)root;
 
++ (NSInteger)numberNodeOnLevel:(NSInteger)level ofTree:(BinaryTreeNode *)root;
+
++ (NSInteger)numberLeavesNodeOfTree:(BinaryTreeNode *)root;
+
++ (NSInteger)maxDistanceOfTree:(BinaryTreeNode *)root;
+
 @end

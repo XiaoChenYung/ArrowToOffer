@@ -19,7 +19,8 @@ int main(int argc, const char * argv[]) {
 //        [BinaryTreeNode levelTraverseTreeNode:root handler:^(BinaryTreeNode *rootNode) {
 //            NSLog(@"%zu", rootNode.value);
 //        }];
-        NSInteger depth = [BinaryTreeNode widthOfTree:root];
+//        NSInteger depth = [BinaryTreeNode widthOfTree:root];
+        NSInteger dis = [BinaryTreeNode maxDistanceOfTree:root];
         NSLog(@"哈哈");
         
     }

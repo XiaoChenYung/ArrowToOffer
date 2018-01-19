@@ -8,7 +8,42 @@
 
 #import "BinaryTreeNode.h"
 
+@interface BinaryTreeNode ()
+
+@end
+
 @implementation BinaryTreeNode
+
++ (NSInteger)maxDistanceOfTree:(BinaryTreeNode *)root {
+    NSLog(@"执行了");
+    if (root == nil) {
+        return 0;
+    }
+    NSInteger maxDepth = [BinaryTreeNode depthOfTree:root.leftNode] + [BinaryTreeNode depthOfTree:root.rightNode];
+    NSInteger maxLeft = [BinaryTreeNode maxDistanceOfTree:root.leftNode];
+    NSInteger maxRight = [BinaryTreeNode maxDistanceOfTree:root.rightNode];
+    return MAX(MAX(maxDepth, maxLeft), maxRight);
+}
+
++ (NSInteger)numberLeavesNodeOfTree:(BinaryTreeNode *)root {
+    if (root == nil) {
+        return 0;
+    }
+    if (root.leftNode == nil && root.rightNode == nil) {
+        return 1;
+    }
+    return [BinaryTreeNode numberLeavesNodeOfTree:root.leftNode] + [BinaryTreeNode numberLeavesNodeOfTree:root.rightNode];
+}
+
++ (NSInteger)numberNodeOnLevel:(NSInteger)level ofTree:(BinaryTreeNode *)root {
+    if (root == nil) {
+        return 0;
+    }
+    if (level == 0) {
+        return 1;
+    }
+    return [BinaryTreeNode numberNodeOnLevel:level - 1 ofTree:root.leftNode] + [BinaryTreeNode numberNodeOnLevel:level - 1 ofTree:root.rightNode];
+}
 
 + (NSInteger)numberNodeOfTree:(BinaryTreeNode *)root {
     if (root == nil) {
