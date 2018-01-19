@@ -8,11 +8,45 @@
 
 #import "BinaryTreeNode.h"
 
-@interface BinaryTreeNode ()
+@interface TreeNodeProperty : NSObject
+
+@property (nonatomic, assign) NSInteger distance;
+
+@property (nonatomic, assign) NSInteger depth;
+
+@end
+
+@implementation TreeNodeProperty
 
 @end
 
 @implementation BinaryTreeNode
+
++ (NSInteger)maxDistanceOfTreeSmart:(BinaryTreeNode *)rootNode {
+    if (!rootNode) {
+        return 0;
+    }
+    //    方案2：将计算节点深度和最大距离放到一次递归中计算，方案一是分别单独递归计算深度和最远距离
+    TreeNodeProperty *p = [self propertyOfTreeNode:rootNode];
+    return p.distance;
+}
+
++ (TreeNodeProperty *)propertyOfTreeNode:(BinaryTreeNode *)rootNode {
+    NSLog(@"执行了");
+    if (!rootNode) {
+        return nil;
+    }
+    
+    TreeNodeProperty *left = [self propertyOfTreeNode:rootNode.leftNode];
+    TreeNodeProperty *right = [self propertyOfTreeNode:rootNode.rightNode];
+    TreeNodeProperty *p = [TreeNodeProperty new];
+    //节点的深度depth = 左子树深度、右子树深度中最大值+1（+1是因为根节点占了1个depth）
+    p.depth = MAX(left.depth, right.depth) + 1;
+    //最远距离 = 左子树最远距离、右子树最远距离和横跨左右子树最远距离中最大值
+    p.distance = MAX(MAX(left.distance, right.distance), left.depth+right.depth);
+    
+    return p;
+}
 
 + (NSInteger)maxDistanceOfTree:(BinaryTreeNode *)root {
     NSLog(@"执行了");

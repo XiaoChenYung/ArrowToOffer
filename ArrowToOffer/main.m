@@ -20,7 +20,7 @@ int main(int argc, const char * argv[]) {
 //            NSLog(@"%zu", rootNode.value);
 //        }];
 //        NSInteger depth = [BinaryTreeNode widthOfTree:root];
-        NSInteger dis = [BinaryTreeNode maxDistanceOfTree:root];
+        NSInteger dis = [BinaryTreeNode maxDistanceOfTreeSmart:root];
         NSLog(@"哈哈");
         
     }

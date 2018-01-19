@@ -40,4 +40,6 @@
 
 + (NSInteger)maxDistanceOfTree:(BinaryTreeNode *)root;
 
++ (NSInteger)maxDistanceOfTreeSmart:(BinaryTreeNode *)rootNode;
+
 @end
