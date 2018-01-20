@@ -22,6 +22,31 @@
 
 @implementation BinaryTreeNode
 
++ (NSArray *)pathForNode:(BinaryTreeNode *)node inTree:(BinaryTreeNode *)root {
+    NSMutableArray *pathArray = [NSMutableArray array];
+    [BinaryTreeNode isFindNode:node inTree:root pathArray:pathArray];
+    return pathArray.copy;
+}
+
++ (BOOL)isFindNode:(BinaryTreeNode *)node inTree:(BinaryTreeNode *)root pathArray:(NSMutableArray *)pathArray {
+    if (root == nil) {
+        return false;
+    }
+    if (root == node) {
+        [pathArray addObject:node];
+        return true;
+    }
+    [pathArray addObject:root];
+    BOOL isFind = [BinaryTreeNode isFindNode:node inTree:root.leftNode pathArray:pathArray];
+    if (isFind == false) {
+        isFind = [BinaryTreeNode isFindNode:node inTree:root.rightNode pathArray:pathArray];
+    }
+    if (isFind == false) {
+        [pathArray removeObject:root];
+    }
+    return isFind;
+}
+
 + (NSInteger)maxDistanceOfTreeSmart:(BinaryTreeNode *)rootNode {
     if (!rootNode) {
         return 0;

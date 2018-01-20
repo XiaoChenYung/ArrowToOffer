@@ -42,4 +42,6 @@
 
 + (NSInteger)maxDistanceOfTreeSmart:(BinaryTreeNode *)rootNode;
 
++ (NSArray *)pathForNode:(BinaryTreeNode *)node inTree:(BinaryTreeNode *)root;
+
 @end
